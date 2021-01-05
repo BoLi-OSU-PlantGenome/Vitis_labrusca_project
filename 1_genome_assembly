@@ -1,0 +1,5 @@
+Genome assembly has 3 major steps:
+
+Step1: run Falcon-unzip to build contigs
+Step2: run Purge Haplotig and MUMMer to identify wrongly assigned contigs between primary and associate contigs
+Step3: run RaGOO to establish pseudomolecules in a reference-based method
