@@ -1,0 +1,19 @@
+#PBS -N RepeatMasker
+#PBS -l walltime=10:00:00
+#PBS -l nodes=1:ppn=16
+#PBS -l mem=50GB
+#PBS -j oe
+#PBS -A PAS1444
+
+
+
+
+cd $PBS_O_WORKDIR
+
+## before running it, build species specific repeat library
+
+mkdir RepeatMasker_output
+RepeatMasker -e ncbi -pa 16 -xsmall  -dir RepeatMasker_output -lib labrusca.fasta.EDTA.TElib.manCorr.fa  -gff -html labrusca.V1.fasta 
+
+
+

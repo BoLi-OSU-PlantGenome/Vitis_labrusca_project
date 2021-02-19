@@ -1,0 +1,18 @@
+#PBS -N EDTA
+#PBS -l walltime=48:00:00
+#PBS -l nodes=1:ppn=12
+#PBS -l mem=40GB
+#PBS -j oe
+#PBS -A PAS1444
+
+
+#export PATH=$PATH:/users/PAS1444/li10917/miniconda2/envs/EDTA/bin/
+
+
+module load python/2.7-conda5.2
+source /users/PAS1444/li10917/miniconda2/bin/activate EDTA
+
+
+cd $PBS_O_WORKDIR 
+#cp database/alluniRefprexp082813 ./alluniRefprexp082813
+perl EDTA.pl -genome labrusca.fasta -species others -step final -sensitive 1 -overwrite 0 -protlib alluniRefprexp082813  -t 12
