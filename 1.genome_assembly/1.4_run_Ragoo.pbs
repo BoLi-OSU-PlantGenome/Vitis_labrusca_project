@@ -1,0 +1,12 @@
+#PBS -N Ragoo
+#PBS -l walltime=10:00:00
+#PBS -l nodes=1:ppn=8
+#PBS -l mem=20GB
+#PBS -j oe
+#PBS -A PAS1444
+
+source activate /users/PAS1444/li10917/miniconda2/envs/Ragoo
+export PATH=$PATH:/users/PAS1444/li10917/miniconda2/envs/Ragoo/bin/
+cd $PBS_O_WORKDIR
+agoo.py p.contig.correct.fa Vv12X.fa -s -C -t 8
+#ragoo.py p.contig.correct.fa Vv12X.fa -R labrusca.correctedReads.fasta -T corr -s -C -t 8

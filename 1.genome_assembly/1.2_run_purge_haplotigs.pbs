@@ -1,0 +1,24 @@
+#PBS -N purge_run
+#PBS -l walltime=8:00:00
+#PBS -l nodes=1:ppn=10
+#PBS -l mem=20GB
+#PBS -j oe
+#PBS -A PAS1444
+
+
+
+
+cd $PBS_O_WORKDIR
+export PATH=$PATH:~/miniconda2/envs/purge/bin
+#samtools faidx cns_ctg.fasta 
+
+#minimap2 -t 10 -ax map-pb cns_ctg.fasta m54215_190625_184337.subreads.fasta m54215_190626_181909.subreads.fasta m54215_190627_184332.subreads.fasta m54215_190628_095721.subreads.fasta m54215_190701_200808.subreads.fasta m54215_190702_112205.subreads.fasta --secondary=no | samtools sort -o aligned.bam 
+
+#purge_haplotigs  hist  -b aligned.bam  -g cns_ctg.fasta  -t 10
+
+purge_haplotigs  cov  -i aligned.bam.gencov  -l 15   -m 95  -h 170  -o coverage_stats.csv -j 80  -s 80
+
+
+purge_haplotigs  purge  -g cns_ctg.fasta  -c coverage_stats.csv -t 10 -o test1 -r repeats.bed -d -b aligned.bam 
+#
+#
